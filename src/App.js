@@ -6,24 +6,46 @@ import { ToDoItem } from './components/ToDoItem';
 import { ToDoButton } from './components/ToDoButton';
 import './App.css';
 
-const defaultToDos = [
-  {
-    text: 'Cursar Introducción a React',
-    isCompleted: true
-  },
-  {
-    text: 'Terminar el curso de React',
-    isCompleted: false
-  },
-  {
-    text: 'Planchar la Ropa',
-    isCompleted: false
-  }
-];
+// const defaultToDos = [
+//   {
+//     text: 'Cursar Introducción a React',
+//     isCompleted: true
+//   },
+//   {
+//     text: 'Terminar el curso de React',
+//     isCompleted: false
+//   },
+//   {
+//     text: 'Planchar la Ropa',
+//     isCompleted: false
+//   }
+// ];
 
+function useLocalStorage(itemName, initialState) {
+  const toDosPerUser = localStorage.getItem(itemName);
+  let defaultToDos;
+
+  if (!toDosPerUser) {
+    defaultToDos = localStorage.setItem(itemName, JSON.stringify(initialState));
+    defaultToDos = initialState;
+  } else {
+    defaultToDos = JSON.parse(localStorage.getItem(itemName));
+  }
+  const [toDos, setToDos] = React.useState(defaultToDos);
+
+  const saveChangesOnToDos = newToDO => {
+    const stringified = JSON.stringify(newToDO);
+    localStorage.setItem(itemName, stringified);
+    setToDos(newToDO);
+  }
+  return [
+    toDos,
+    saveChangesOnToDos
+  ]
+}
 
 function App() {
-  const [toDos, setToDos] = React.useState(defaultToDos);
+  const [toDos, setToDos] = useLocalStorage('toDosPerUser', []);
   const [search, setSearch] = React.useState('');
 
   const totalToDos = toDos.length;
