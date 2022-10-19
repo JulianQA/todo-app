@@ -3,13 +3,10 @@ import React from 'react'
 function ToDoItem(props) {
     return (
         <li>
-            <span onClick={() => {
-                alert(`Completaste el ToDo: ${props.text}`);
-            }}>✔️</span>
-            <p>{props.text}</p>
-            <span onClick={() => {
-                alert(`Borraste el ToDo: ${props.text}`);
-            }}>✖️</span>
+            <span
+                onClick={props.toCompleteToDos}>✔️</span>
+            <p className={`toDoItem__p ${props.isCompleted && 'completed'}`}>{props.text}</p>
+            <span onClick={props.toDeleteToDo}>✖️</span>
         </li>
     )
 }

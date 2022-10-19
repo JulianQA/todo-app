@@ -62,8 +62,12 @@ ul {
   transform: rotate(45deg);
 }
 
-.todo__container li p {
+.toDoItem__p {
   width: 100%;
+}
+
+.toDoItem__p.completed {
+  text-decoration: line-through;
 }
 
 .todo__button {

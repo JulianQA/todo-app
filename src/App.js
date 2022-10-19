@@ -6,19 +6,64 @@ import { ToDoItem } from './components/ToDoItem';
 import { ToDoButton } from './components/ToDoButton';
 import './App.css';
 
-const todos = [{
-  text: 'Cursar Introducción a React', isCompleted: false
-}, {
-  text: 'Terminar el curso de React', isCompleted: false
-}];
+const defaultToDos = [
+  {
+    text: 'Cursar Introducción a React',
+    isCompleted: true
+  },
+  {
+    text: 'Terminar el curso de React',
+    isCompleted: false
+  },
+  {
+    text: 'Planchar la Ropa',
+    isCompleted: false
+  }
+];
+
+
 function App() {
+  const [toDos, setToDos] = React.useState(defaultToDos);
+  const [search, setSearch] = React.useState('');
+
+  const totalToDos = toDos.length;
+  const completedToDos = toDos.filter(item => item.isCompleted === true).length;
+
+  let filterByToDos = [];
+
+  if (!search.length >= 1) {
+    filterByToDos = toDos;
+  } else {
+    filterByToDos = toDos.filter(item => {
+      const itemText = item.text.toLowerCase();
+      const searchText = search.toLowerCase();
+      return itemText.includes(searchText);
+    })
+  }
+  function toCompleteToDos(text) {
+    const index = toDos.findIndex(item => item.text === text);
+    const newArray = [...toDos];
+    newArray[index].isCompleted = true;
+    setToDos(newArray);
+  }
+  function toDeleteToDo(text) {
+    const index = toDos.findIndex(item => item.text === text);
+    const newArray = [...toDos];
+    newArray.splice(index, 1);
+    setToDos(newArray);
+  }
   return (
     <main>
-      <TodoCounter />
-      <ToDoSearch />
+      <TodoCounter total={totalToDos} completed={completedToDos} />
+      <ToDoSearch search={search} setSearch={setSearch} />
       <ToDoList>
-        {todos.map(e => (
-          < ToDoItem key={e.text} text={e.text} />
+        {filterByToDos.map(e => (
+          < ToDoItem
+            key={e.text}
+            text={e.text}
+            isCompleted={e.isCompleted}
+            toCompleteToDos={() => toCompleteToDos(e.text)}
+            toDeleteToDo={() => toDeleteToDo(e.text)} />
         ))}
       </ToDoList>
       <ToDoButton />
