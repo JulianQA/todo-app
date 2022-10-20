@@ -3,23 +3,10 @@ import { TodoCounter } from './components/ToDoCounter';
 import { ToDoSearch } from './components/ToDoSearch';
 import { ToDoList } from './components/ToDoList';
 import { ToDoItem } from './components/ToDoItem';
+import { Modal } from './components/Modal';
+import { ToDoForm } from './components/ToDoForm';
 import { ToDoButton } from './components/ToDoButton';
 import './App.css';
-
-// const defaultToDos = [
-//   {
-//     text: 'Cursar Introducción a React',
-//     isCompleted: true
-//   },
-//   {
-//     text: 'Terminar el curso de React',
-//     isCompleted: false
-//   },
-//   {
-//     text: 'Planchar la Ropa',
-//     isCompleted: false
-//   }
-// ];
 
 function useLocalStorage(itemName, initialState) {
   const toDosPerUser = localStorage.getItem(itemName);
@@ -47,6 +34,7 @@ function useLocalStorage(itemName, initialState) {
 function App() {
   const [toDos, setToDos] = useLocalStorage('toDosPerUser', []);
   const [search, setSearch] = React.useState('');
+  const [isOpenModal, setIsOpenModal] = React.useState(false);
 
   const totalToDos = toDos.length;
   const completedToDos = toDos.filter(item => item.isCompleted === true).length;
@@ -74,6 +62,14 @@ function App() {
     newArray.splice(index, 1);
     setToDos(newArray);
   }
+  function toAddToDos(text) {
+    const newArray = [...toDos];
+    newArray.push({
+      text,
+      isCompleted: false
+    })
+    setToDos(newArray);
+  }
   return (
     <main>
       <TodoCounter total={totalToDos} completed={completedToDos} />
@@ -88,7 +84,16 @@ function App() {
             toDeleteToDo={() => toDeleteToDo(e.text)} />
         ))}
       </ToDoList>
-      <ToDoButton />
+      {!!isOpenModal && (
+        <Modal>
+          <ToDoForm
+            toAddToDos={toAddToDos}
+            setIsOpenModal={setIsOpenModal} />
+        </Modal>)
+      }
+      <ToDoButton
+        isOpenModal={isOpenModal}
+        setIsOpenModal={setIsOpenModal} />
     </main>
   );
 }

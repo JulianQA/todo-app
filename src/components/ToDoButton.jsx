@@ -1,10 +1,10 @@
 import React from 'react'
 
-function ToDoButton() {
+function ToDoButton({ isOpenModal, setIsOpenModal }) {
     return (
         <button className='todo__button'
             onClick={() => {
-                alert('aquí debería abrirse el modal');
+                isOpenModal ? setIsOpenModal(false) : setIsOpenModal(true);
             }}>+
         </button>
     )
