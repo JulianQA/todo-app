@@ -74,15 +74,31 @@ function App() {
     <main>
       <TodoCounter total={totalToDos} completed={completedToDos} />
       <ToDoSearch search={search} setSearch={setSearch} />
-      <ToDoList>
-        {filterByToDos.map(e => (
+      <ToDoList
+        totalToDos={totalToDos}
+        search={search}
+        filterByToDos={filterByToDos}
+        onEmptyToDos={() => <p>Crea tu primer ToDo</p>}
+        onEmptySearch={(text) => <p>no hay ToDos que contenga {text}</p>}
+      // render={todo => (
+      //   < ToDoItem
+      //     key={todo.text}
+      //     text={todo.text}
+      //     isCompleted={todo.isCompleted}
+      //     toCompleteToDos={() => toCompleteToDos(todo.text)}
+      //     toDeleteToDo={() => toDeleteToDo(todo.text)}
+      //   />
+      // )}
+      >
+        {todo => (
           < ToDoItem
-            key={e.text}
-            text={e.text}
-            isCompleted={e.isCompleted}
-            toCompleteToDos={() => toCompleteToDos(e.text)}
-            toDeleteToDo={() => toDeleteToDo(e.text)} />
-        ))}
+            key={todo.text}
+            text={todo.text}
+            isCompleted={todo.isCompleted}
+            toCompleteToDos={() => toCompleteToDos(todo.text)}
+            toDeleteToDo={() => toDeleteToDo(todo.text)}
+          />
+        )}
       </ToDoList>
       {!!isOpenModal && (
         <Modal>
