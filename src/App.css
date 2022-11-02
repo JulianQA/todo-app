@@ -62,6 +62,10 @@ ul {
   transform: rotate(45deg);
 }
 
+.todo__container ul li span {
+  cursor: pointer;
+}
+
 .toDoItem__p {
   width: 100%;
 }

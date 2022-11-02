@@ -7,7 +7,6 @@ function ToDoSearch({ search, setSearch }) {
             placeholder='Search task...'
             value={search}
             onChange={(event) => {
-                console.log(event.target.value)
                 setSearch(event.target.value);
             }} />
     )
