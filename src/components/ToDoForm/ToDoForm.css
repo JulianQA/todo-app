@@ -1,0 +1,56 @@
+.new-todo__form {
+   display: flex;
+   flex-direction: column;
+   justify-content: center;
+   height: 100vh;
+   width: 90%;
+   margin: auto;
+}
+
+.new-todo__label {
+   font-size: 2rem;
+   margin-bottom: 24px;
+   text-align: center;
+}
+
+.new-todo__texte-area {
+   width: 70%;
+   height: 30%;
+   margin-bottom: 12px;
+   resize: none;
+   border-radius: 12px;
+   padding: 16px;
+   font-size: 1.8rem;
+   font-family: inherit;
+   align-self: center;
+}
+
+.new-todo__texte-area:focus {
+   outline-color: lightblue;
+}
+
+.buttons__container {
+   width: 70%;
+   display: flex;
+   justify-content: space-evenly;
+   align-self: center;
+}
+
+.buttons__container button {
+   width: 100px;
+   height: 45px;
+   font-family: inherit;
+   font-size: 1.6rem;
+   border-radius: 8px;
+   cursor: pointer;
+}
+
+.add-button {
+   background-color: lightblue;
+   border: none;
+}
+
+.cancel-button {
+   background-color: rgb(209, 209, 209);
+   border: none;
+}

@@ -87,6 +87,7 @@ ul {
   color: black;
   border-radius: 50%;
   box-shadow: 0px 0px 10px 0px rgb(24 24 24 / 50%);
+  cursor: pointer;
   z-index: 3;
 }
 
@@ -108,54 +109,4 @@ ul {
   text-align: center;
   padding: 8px;
   border-radius: 12px;
-}
-
-.box form {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-}
-
-.box label {
-  font-size: 2rem;
-  margin-bottom: 12px;
-}
-
-.box textarea {
-  height: 60%;
-  margin-bottom: 12px;
-  resize: none;
-  border-radius: 12px;
-  padding: 8px;
-  font-size: 1.8rem;
-  font-family: inherit;
-}
-
-.box textarea:focus {
-  outline-color: lightblue;
-}
-
-.buttons__container {
-  display: flex;
-  justify-content: center;
-  gap: 16px;
-  justify-self: end;
-}
-
-.buttons__container button {
-  width: 80px;
-  height: 40px;
-  font-family: inherit;
-  font-size: 1.6rem;
-  border-radius: 8px;
-}
-
-.add-button {
-  background-color: lightblue;
-  border: none;
-}
-
-.cancel-button {
-  background-color: rgb(209, 209, 209);
-  border: none;
 }

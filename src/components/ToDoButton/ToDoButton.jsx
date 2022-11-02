@@ -1,10 +1,12 @@
 import React from 'react'
+import { useNavigate } from 'react-router-dom'
 
-function ToDoButton({ isOpenModal, setIsOpenModal }) {
+function ToDoButton() {
+    const navigate = useNavigate();
     return (
         <button className='todo__button'
             onClick={() => {
-                isOpenModal ? setIsOpenModal(false) : setIsOpenModal(true);
+                navigate('/new');
             }}>+
         </button>
     )

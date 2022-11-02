@@ -3,8 +3,7 @@ import { TodoCounter } from '../../components/ToDoCounter/ToDoCounter';
 import { ToDoSearch } from '../../components/ToDoSearch/ToDoSearch';
 import { ToDoList } from '../../components/ToDoList/ToDoList';
 import { ToDoItem } from '../../components/ToDoItem/ToDoItem';
-import { Modal } from '../../components/Modal';
-import { ToDoForm } from '../../components/ToDoForm/ToDoForm';
+// import { Modal } from '../../components/Modal';
 import { ToDoButton } from '../../components/ToDoButton/ToDoButton';
 import { useMain } from '../../helpers/useMain';
 
@@ -12,13 +11,11 @@ import { useMain } from '../../helpers/useMain';
 function HomePage() {
    const {
       setSearch,
-      isOpenModal,
-      setIsOpenModal,
-      totalToDos,
-      completedToDos,
       toCompleteToDos,
       toDeleteToDo,
-      toAddToDos,
+      // toAddToDos,
+      totalToDos,
+      completedToDos,
       search,
       filterByToDos,
    } = useMain();
@@ -35,25 +32,17 @@ function HomePage() {
          >
             {todo => (
                < ToDoItem
+                  id={todo.id}
                   key={todo.id}
                   text={todo.text}
+                  toDos={filterByToDos}
                   isCompleted={todo.isCompleted}
                   toCompleteToDos={() => toCompleteToDos(todo.id)}
                   toDeleteToDo={() => toDeleteToDo(todo.id)}
-                  toEditToDo={() => console.log('Edit')}
                />
             )}
          </ToDoList>
-         {!!isOpenModal && (
-            <Modal>
-               <ToDoForm
-                  toAddToDos={toAddToDos}
-                  setIsOpenModal={setIsOpenModal} />
-            </Modal>)
-         }
-         <ToDoButton
-            isOpenModal={isOpenModal}
-            setIsOpenModal={setIsOpenModal} />
+         <ToDoButton />
       </main>
    );
 }

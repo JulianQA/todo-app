@@ -5,7 +5,6 @@ import { useLocalStorage } from "./useLocalStorage";
 function useMain() {
    const [toDos, setToDos] = useLocalStorage('toDosPerUser', []);
    const [search, setSearch] = React.useState('');
-   const [isOpenModal, setIsOpenModal] = React.useState(false);
 
    const totalToDos = toDos.length;
    const completedToDos = toDos.filter(item => item.isCompleted === true).length;
@@ -26,6 +25,13 @@ function useMain() {
       const index = toDos.findIndex(item => item.id === id);
       const newArray = [...toDos];
       newArray[index].isCompleted = true;
+      setToDos(newArray);
+   }
+
+   function toEditToDos(id, newText) {
+      const index = toDos.findIndex(item => item.id === id);
+      const newArray = [...toDos];
+      newArray[index].text = newText;
       setToDos(newArray);
    }
 
@@ -51,11 +57,12 @@ function useMain() {
       const idMax = !idList ? 1 : Math.max(idList);
       return idMax + 1
    }
-
+   const getTodo = (id) => {
+      const index = toDos.findIndex(item => item.id === id);
+      return toDos[index]
+   }
    return {
       setSearch,
-      isOpenModal,
-      setIsOpenModal,
       totalToDos,
       completedToDos,
       toCompleteToDos,
@@ -63,6 +70,8 @@ function useMain() {
       toAddToDos,
       search,
       filterByToDos,
+      toEditToDos,
+      getTodo,
    }
 }
 
