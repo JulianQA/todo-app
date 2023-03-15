@@ -3,9 +3,9 @@ import "./toDoCounter.css";
 
 function ToDoCounter({ total, completed }) {
   return (
-    <h2 className="ToDoCounter">
+    <h1 className="ToDoCounter">
       Has completado {completed} de {total} ToDos
-    </h2>
+    </h1>
   );
 }
 

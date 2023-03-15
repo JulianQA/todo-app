@@ -6,23 +6,9 @@
 
 html {
   font-size: 62.5%;
+  background-color: var(--main-bg-color);
 }
 
 ul {
   list-style: none;
-}
-
-.todo__input {
-  display: block;
-  border: 1px solid black;
-  margin: 0 auto 16px auto;
-  border-radius: 25px;
-  padding: 0 8px;
-  width: 250px;
-  height: 40px;
-  font-size: 1.4rem;
-}
-
-.todo__input:focus {
-  outline-color: lightblue;
 }

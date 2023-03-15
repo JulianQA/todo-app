@@ -3,8 +3,8 @@ import { ToDoCounter } from "../../components/ToDoCounter/ToDoCounter";
 import { ToDoSearch } from "../../components/ToDoSearch/ToDoSearch";
 import { ToDoList } from "../../components/ToDoList/ToDoList";
 import { ToDoItem } from "../../components/ToDoItem/ToDoItem";
-import { NewToDoButton } from "../../components/NewToDoButton/NewToDoButton";
 import { useMain } from "../../helpers/useMain";
+import "./homePage.css";
 
 function HomePage() {
   const {
@@ -17,7 +17,7 @@ function HomePage() {
     filterByToDos,
   } = useMain();
   return (
-    <main>
+    <main className="HomePage">
       <ToDoCounter total={totalToDos} completed={completedToDos} />
       <ToDoSearch search={search} setSearch={setSearch} />
       <ToDoList
@@ -37,7 +37,6 @@ function HomePage() {
           />
         )}
       </ToDoList>
-      <NewToDoButton />
     </main>
   );
 }

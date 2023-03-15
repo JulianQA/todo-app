@@ -1,0 +1,17 @@
+.ToDoSearch {
+  display: block;
+  border: 1px solid var(--third-color);
+  background-color: var(--main-bg-color);
+  margin: 0 auto 16px auto;
+  border-radius: 25px;
+  padding: 0 8px;
+  width: 250px;
+  height: 40px;
+  font-size: 1.4rem;
+  outline: none;
+  color: var(--fifth-color);
+}
+
+.ToDoSearch:focus {
+  border: 1px solid var(--fifth-color);
+}
