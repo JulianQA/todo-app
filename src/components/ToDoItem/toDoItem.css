@@ -1,0 +1,22 @@
+.ToDoItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
+  min-height: 50px;
+  max-height: max-content;
+  background-color: rgb(209, 209, 209);
+  border-radius: 8px;
+  margin-bottom: 8px;
+  padding: 8px;
+  font-size: 1.3rem;
+  gap: 4px;
+}
+
+.ToDoItem__text {
+  width: 100%;
+}
+
+.ToDoItem__text.completed {
+  text-decoration: line-through;
+}
