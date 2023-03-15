@@ -4,7 +4,6 @@ import { ToDoSearch } from "../../components/ToDoSearch/ToDoSearch";
 import { ToDoList } from "../../components/ToDoList/ToDoList";
 import { ToDoItem } from "../../components/ToDoItem/ToDoItem";
 import { useMain } from "../../helpers/useMain";
-import "./homePage.css";
 
 function HomePage() {
   const {

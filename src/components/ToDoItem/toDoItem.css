@@ -25,9 +25,11 @@
   border-left: 1px solid var(--third-color);
 }
 .ToDoItem__text {
-  text-transform: capitalize;
   width: 100%;
   color: var(--title-color);
+}
+.ToDoItem__text::first-letter {
+  text-transform: capitalize;
 }
 
 .ToDoItem__text.completed {
